@@ -7,6 +7,7 @@ import thunk from 'redux-thunk'
 
 import rootReducer from "../reducers";
 import SmurfList from "./SmurfList";
+import Form from "./Form";
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
@@ -18,6 +19,7 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <SmurfList></SmurfList>
+          <Form></Form>
         </div>
       </Provider>
     );

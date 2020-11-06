@@ -1,8 +1,14 @@
-import { FETCH_DATA, FETCH_DATA_SUCCESS } from "../actions";
+import { CHANGE_VALUE, FETCH_DATA, FETCH_DATA_SUCCESS } from "../actions";
 
 const initialState = {
     smurfs: [],
-    isFetching: false
+    isFetching: false,
+    form: {
+        name: '',
+        age: '',
+        height: '',
+        id: ''
+    }
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -18,6 +24,16 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 smurfs: action.payload,
                 isFetching: false
+            }
+
+        case CHANGE_VALUE:
+            console.log(action.payload)
+            return {
+                ...state,
+                form: {
+                    ...state.form,
+                    [action.payload.name]: action.payload.value
+                }
             }
 
         default:
