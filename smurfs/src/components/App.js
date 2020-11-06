@@ -18,8 +18,8 @@ class App extends Component {
 
       <Provider store={store}>
         <div className="App">
-          <SmurfList></SmurfList>
           <Form></Form>
+          <SmurfList></SmurfList>
         </div>
       </Provider>
     );

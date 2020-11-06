@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { changeValue } from '../actions'
+import { changeValue, addSmurf } from '../actions'
 
 class Form extends React.Component {
 
@@ -12,9 +12,15 @@ class Form extends React.Component {
         })
     }
 
+    submit = (evt) => {
+        evt.preventDefault()
+
+        this.props.addSmurf(this.props.form)
+    }
+
     render() {
         return (
-            <form>
+            <form onSubmit={this.submit}>
                 <label>
                     Name:
                     <input value={this.props.form.name} onChange={this.onChange} name="name"></input>
@@ -39,4 +45,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { changeValue })(Form)
+export default connect(mapStateToProps, { changeValue, addSmurf })(Form)

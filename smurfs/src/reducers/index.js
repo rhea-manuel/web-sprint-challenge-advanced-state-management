@@ -1,4 +1,5 @@
-import { CHANGE_VALUE, FETCH_DATA, FETCH_DATA_SUCCESS } from "../actions";
+import Axios from "axios";
+import { ADD_SMURF, CHANGE_VALUE, FETCH_DATA, FETCH_DATA_SUCCESS } from "../actions";
 
 const initialState = {
     smurfs: [],
@@ -6,8 +7,7 @@ const initialState = {
     form: {
         name: '',
         age: '',
-        height: '',
-        id: ''
+        height: ''
     }
 }
 
@@ -27,7 +27,7 @@ export default function rootReducer(state = initialState, action) {
             }
 
         case CHANGE_VALUE:
-            console.log(action.payload)
+            // console.log(action.payload)
             return {
                 ...state,
                 form: {
@@ -35,6 +35,11 @@ export default function rootReducer(state = initialState, action) {
                     [action.payload.name]: action.payload.value
                 }
             }
+
+        case ADD_SMURF:
+            Axios.post('http://localhost:3333/smurfs/', state.form)
+                .then((res) => console.log(res))
+                .catch((err) => console.log(err))
 
         default:
             console.log("Default")

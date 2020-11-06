@@ -8,6 +8,10 @@ class SmurfList extends React.Component {
         this.props.getData()
     }
 
+    componentDidUpdate(){
+        this.props.getData()
+    }
+
     render() {
         return (
             <div>

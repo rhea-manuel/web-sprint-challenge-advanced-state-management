@@ -27,6 +27,8 @@ export function changeValue({ name, value }) {
 
 export function addSmurf(formData) {
     console.log('action', formData)
+
+    // formData.id = Date.now()
     return {
         type: ADD_SMURF,
         payload: formData
